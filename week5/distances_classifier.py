@@ -3,12 +3,13 @@ import json
 import datetime
 import numpy as np
 import pandas as pd
-# from xgboost import XGBClassifier
-# import sklearn.model_selection
-# from jarowinkler import jaro_winkler
+from xgboost import XGBClassifier
+import sklearn.model_selection
+from jarowinkler import jaro_winkler
+from distances import NameDistance 
 
 class distancesClassifier():
-    def __init__(self, model_dir: str, model_type: str = 'xgb', name_distance: str):
+    def __init__(self, model_dir: str, model_type: str = 'xgb'):
         self.model = (self._initialize_xgb_model() if model_type == 'xgb' 
                       else self._initialize_random_forest())
         self.metadata = {}
